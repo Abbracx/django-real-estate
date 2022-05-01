@@ -39,27 +39,26 @@ class CustomUserManager(BaseUserManager):
 
         return user
 
-        def create_superuser(self, username, first_name, last_name, email, password, **extra_fields):
-            extra_fields.setdefault('is_staff', True)
-            extra_fields.setdefault('is_superuser', True)
-            extra_fields.setdefault('is_active', True)
+    def create_superuser(self, username, first_name, last_name, email, password, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_active', True)
 
-            if extra_fields.get('is_staff') is not True:
-                raise ValueError("Superusers must have is_staff=True")
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError("Superusers must have is_staff=True")
 
-            if extra_fields.get('is_superuser') is not True:
-                raise ValueError("Superusers must have is_superuser=True")
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError("Superusers must have is_superuser=True")
 
-            if not password:
-                raise ValueError("Superusers must have a password")
+        if not password:
+            raise ValueError("Superusers must have a password")
 
-            if email:
-                email = self.normalize_email(email)
-                self.email_validator(email) 
-            else:
-                raise ValueError(_("Admin Account: An email address is required"))
+        if email:
+            email = self.normalize_email(email)
+            self.email_validator(email) 
+        else:
+            raise ValueError(_("Admin Account: An email address is required"))
 
-            user = self.create_user(username, first_name, last_name, email, password, **extra_fields)
-            user.save(using=self._db)
-            return user 
-            
+        user = self.create_user(username, first_name, last_name, email, password, **extra_fields)
+        user.save(using=self._db)
+        return user 
