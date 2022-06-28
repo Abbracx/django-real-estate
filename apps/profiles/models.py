@@ -1,12 +1,11 @@
 from email.policy import default
 from tabnanny import verbose
-from django.db import models
-from django.contrib.auth import get_user_model
 
+from django.contrib.auth import get_user_model
+from django.db import models
 from django.utils.translation import gettext_lazy as _
- 
 from django_countries.fields import CountryField
-from phonenumber_field.modelfields import PhoneNumberField, PhoneNumber
+from phonenumber_field.modelfields import PhoneNumber, PhoneNumberField
 
 from apps.common.models import TimeStampedUUIDModel
 

@@ -1,6 +1,7 @@
-from re import I
-import environ
 from pathlib import Path
+from re import I
+
+import environ
 
 env = environ.Env(
     DEBUG=(bool,False)

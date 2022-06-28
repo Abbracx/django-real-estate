@@ -1,8 +1,9 @@
 from urllib.parse import urlparse
-from django.urls import path
-from .views import ( AgentListAPIView, TopAgentsListAPIView, 
-                    GetProfileAPIView, UpdateProfileAPIView)
 
+from django.urls import path
+
+from .views import (AgentListAPIView, GetProfileAPIView, TopAgentsListAPIView,
+                    UpdateProfileAPIView)
 
 urlpatterns = [
     path("me/", GetProfileAPIView.as_view(), name="get_profile"),
